@@ -1,80 +1,22 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { ApexOptions } from "apexcharts";
+import { options } from "../utils/ApexOptions";
 
 const TwoBarReversalChart: React.FC = () => {
     const series = [
         {
             data: [
-                // First Two-Bar Reversal (Bullish)
-                {
-                    x: new Date("2023-01-01T09:30:00"), // First 5-minute candle
-                    y: [4500, 4505, 4490, 4492], // Bearish bar
-                },
-                {
-                    x: new Date("2023-01-01T09:35:00"), // Second 5-minute candle
-                    y: [4492, 4510, 4492, 4508], // Bullish bar reversing the prior
-                },
-                // Second Two-Bar Reversal (Bearish)
-                {
-                    x: new Date("2023-01-01T09:40:00"), // Third 5-minute candle
-                    y: [4508, 4512, 4505, 4510], // Bullish bar
-                },
-                {
-                    x: new Date("2023-01-01T09:45:00"), // Fourth 5-minute candle
-                    y: [4510, 4510, 4498, 4500], // Bearish bar reversing the prior
-                },
+                { x: new Date("2023-01-01T14:00:00Z"), y: [4478.25, 4479.50, 4477.75, 4479.25] }, // Early bullish start
+                { x: new Date("2023-01-01T14:05:00Z"), y: [4479.25, 4481.50, 4479.00, 4481.00] }, // Strong bullish candle
+                { x: new Date("2023-01-01T14:10:00Z"), y: [4481.00, 4482.25, 4480.75, 4481.75] }, // Continued buying
+                { x: new Date("2023-01-01T14:15:00Z"), y: [4481.75, 4482.00, 4480.25, 4480.50] }, // Bearish reversal candle
+                { x: new Date("2023-01-01T14:20:00Z"), y: [4480.50, 4480.75, 4479.50, 4479.75] }, // Follow-through selling
+                { x: new Date("2023-01-01T14:25:00Z"), y: [4479.75, 4480.00, 4478.50, 4478.75] }, // Selling pressure increases
+                { x: new Date("2023-01-01T14:30:00Z"), y: [4478.75, 4479.25, 4477.75, 4478.25] }, // Downtrend continues
             ],
         },
     ];
 
-    const options: ApexOptions = {
-        chart: {
-            type: "candlestick",
-            height: 350,
-            toolbar: {
-                show: false,
-            },
-            zoom: {
-                enabled: false,
-            },
-            selection: {
-                enabled: false,
-            },
-        },
-        xaxis: {
-            type: "datetime",
-            labels: {
-                format: "HH:mm", // Display time as 5-minute intervals
-            },
-        },
-        yaxis: {
-            tooltip: {
-                enabled: true,
-            },
-            title: {
-                text: "Price (ES Mini)",
-            },
-        },
-        plotOptions: {
-            candlestick: {
-                colors: {
-                    upward: "#ffffff", // Green for bullish bars
-                    downward: "#000000", // Red for bearish bars
-                },
-                wick: {
-                    useFillColor: false, // Ensures wicks are black regardless of candle color
-                },
-            },
-        },
-        stroke: {
-            width: 1, // Adds a border outline to the candles
-            colors: ["#000000"], // Black outline for all candles
-        },
-        tooltip: {
-            enabled: false
-        },
-    };
 
     return (
         <div>
@@ -82,8 +24,19 @@ const TwoBarReversalChart: React.FC = () => {
                 options={options}
                 series={series}
                 type="candlestick"
-                height={350}
+                height={280}
             />
+            <div className="chart-desc">
+                <h3>Two-Bar Reversal Example</h3>
+                <p>
+                    At <strong>09:05</strong>, a strong bullish candle pushes the price to new highs, indicating buyer dominance. However, at <strong>09:15</strong>, a large bearish candle forms, closing below the previous bar's low. This shows sellers taking control, marking the start of a bearish reversal.
+                </p>
+                <ul>
+                    <li><strong>09:05:</strong> Bullish candle with strong momentum.</li>
+                    <li><strong>09:15:</strong> Bearish reversal bar closes below the prior low.</li>
+                    <li><strong>09:20:</strong> Selling continues, confirming the reversal.</li>
+                </ul>
+            </div>
         </div>
     );
 };

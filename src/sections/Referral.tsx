@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Referral.scss';
+import IB from '../assets/partners/ib.svg';
 
 const Referral: React.FC = () => {
   const referrals = [
@@ -19,18 +20,35 @@ const Referral: React.FC = () => {
       logo: 'https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png',
       link: 'https://apextraderfunding.com/member/aff/go/levonavetisyan?c=FFAGWZZI',
     },
+    {
+      name: 'Dukascopy Bank',
+      logo: 'https://live-login.dukascopy.com/cabinet/styles/dc-gva/logo-dark.svg',
+      link: 'https://www.dukascopy.com/api/es/13914/type-S/target-id-149',
+    },
+    {
+      name: 'Interactive Brockers',
+      isTextDark: true,
+      logo: IB,
+      link: 'https://ibkr.com/referral/levon736',
+    },
   ];
 
   return (
     <section className="referral-section py-5">
       <div className="container">
-        <h2 className="section-title">Meet Our Fantastic Partners!</h2>
+        <h2 className="section-title">Meet My Fantastic Partners!</h2>
         <h3 className="section-subtitle">
           I am proud to collaborate with these amazing platforms. Check them out!
         </h3>
         <div className="referral-logos">
           {referrals.map((referral, index) => (
-            <a key={index} href={referral.link} target="_blank" rel="noopener noreferrer">
+            <a
+              key={index}
+              href={referral.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-3 ${referral.isTextDark ? 'bg-light rounded' : ''}`}
+            >
               <img
                 src={referral.logo}
                 alt={`${referral.name} logo`}

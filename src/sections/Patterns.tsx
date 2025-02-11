@@ -11,7 +11,7 @@ import './Patterns.scss';
 
 const Patterns: React.FC = () => {
   return (
-    <section className="patterns">
+    <section className="patterns" id="patterns">
       <div className="container">
         <h2>Reversal Patterns</h2>
         <div className="d-flex flex-wrap justify-content-start">

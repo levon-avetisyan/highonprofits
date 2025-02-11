@@ -11,8 +11,8 @@ function App() {
   return (
     <>
       <Hero />
-      <Referral />
       <Patterns />
+      <Referral />
     </>
   );
 }

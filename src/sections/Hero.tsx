@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
             you make better decisions.
           </p>
           <ButtonPrimary text="Get Started" onClick={handleGetStarted} />
-          <div className="social-links mt-5">
+          <div className="social-links">
             <a
               className="mx-3 fs-3"
               href="https://t.me/highonprofits"
